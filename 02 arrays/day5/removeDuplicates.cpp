@@ -61,7 +61,7 @@ void removeDuplicatesOptimal(vector<int> arr)
 
 int main()
 {
-    vector<int> arr = {4, 5, 5, 9, 4, 9, 5, 1, 7, 1};
+    vector<int> arr = {0, 0, 1, 2, 3};
 
     removeDuplicatesBrute(arr);
     removeDuplicatesBetter(arr);

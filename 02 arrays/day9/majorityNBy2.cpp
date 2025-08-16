@@ -42,21 +42,23 @@ int approach1(vector<int> nums)
 }
 
 /*
-    Approach 2: Boyer–Moore Voting Algorithm
-    -----------------------------------------
+    Approach 2: Boyer–Moore Voting Algorithm (with verification)
+    ------------------------------------------------------------
     Steps:
-        1. Maintain a candidate element (el) and a counter (count).
-        2. Traverse the array:
+        1. Maintain a candidate element (candidate) and a counter (count).
+        2. First Pass - Find Candidate:
             - If count is 0, set current element as candidate and count = 1.
             - If current element == candidate, increment count.
             - Otherwise, decrement count.
-        3. Candidate at the end is the majority element.
+        3. Second Pass - Verify Candidate:
+            - Count the frequency of the candidate in the array.
+            - If frequency > n/2, return candidate; otherwise, return -1 (no majority element).
 
     Time Complexity:
-        O(n) → single pass through the array.
+        O(n+n) = O(n) → Two passes through the array.
 
     Space Complexity:
-        O(1) → only a few integer variables used.
+        O(1) → Only a few integer variables used.
 */
 int approach2(vector<int> nums)
 {
@@ -64,6 +66,7 @@ int approach2(vector<int> nums)
     int count = 0;
     int el = -1;
 
+    // O(n)
     for (int i = 0; i < n; i++)
     {
         if (count == 0)
@@ -81,7 +84,18 @@ int approach2(vector<int> nums)
         }
     }
 
-    return el;
+    // O(n)
+    int freq = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == el)
+            freq++;
+    }
+
+    if (freq > (n / 2))
+        return el;
+    else
+        return -1;
 }
 
 int main()
