@@ -94,7 +94,6 @@ int approach3(vector<int> nums)
         }
     }
 
-    // dummy return statement:
     return -1;
 }
 
