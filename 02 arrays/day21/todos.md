@@ -1,0 +1,6 @@
+- [ ] https://takeuforward.org/data-structure/3-sum-find-triplets-that-add-up-to-a-zero/ , https://leetcode.com/problems/3sum/
+- [ ] https://takeuforward.org/data-structure/4-sum-find-quads-that-add-up-to-a-target-value/ , https://leetcode.com/problems/4sum/
+- [ ] https://takeuforward.org/data-structure/merge-two-sorted-arrays-without-extra-space/ , https://leetcode.com/problems/reverse-pairs/description/
+- [ ] https://takeuforward.org/data-structure/count-reverse-pairs/ , https://leetcode.com/problems/reverse-pairs/
+- [ ] Leetcode daily question
+- [ ] 
