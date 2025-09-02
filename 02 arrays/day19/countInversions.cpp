@@ -2,79 +2,77 @@
 using namespace std;
 
 // ------------------- Brute Force O(n^2) -------------------
-int reversePairsBrute(vector<int> &nums)
+pair<int, vector<pair<int, int>>> reversePairsBrutePairs(vector<int> &nums)
 {
     int n = nums.size();
-    int count = 0;
+    vector<pair<int, int>> pairs;
 
     for (int i = 0; i < n; i++)
     {
         for (int j = i + 1; j < n; j++)
         {
-            if (nums[i] > 2LL * nums[j]) // 2LL avoids overflow
+            if (nums[i] > 2LL * nums[j])
             {
-                count++;
+                pairs.push_back({nums[i], nums[j]});
             }
         }
     }
-    return count;
+
+    return {pairs.size(), pairs};
 }
 
 // ------------------- Merge Sort Based O(n log n) -------------------
-int countAndMerge(vector<int> &arr, int low, int mid, int high)
+int countAndMergeWithPairs(vector<int> &arr, int low, int mid, int high, vector<pair<int, int>> &pairs)
 {
     int count = 0;
-
-    // Count reverse pairs before merging
     int j = mid + 1;
+
+    // Count reverse pairs and store them
     for (int i = low; i <= mid; i++)
     {
-        while (j <= high && (long long)arr[i] > 2LL * arr[j])
+        int temp_j = j;
+        while (temp_j <= high && (long long)arr[i] > 2LL * arr[temp_j])
         {
-            j++;
+            pairs.push_back({arr[i], arr[temp_j]});
+            temp_j++;
         }
-        count += (j - (mid + 1));
+        count += (temp_j - (mid + 1));
     }
 
+    // Merge step
     vector<int> temp;
     int left = low, right = mid + 1;
     while (left <= mid && right <= high)
     {
         if (arr[left] <= arr[right])
-        {
             temp.push_back(arr[left++]);
-        }
         else
-        {
             temp.push_back(arr[right++]);
-        }
     }
     while (left <= mid)
-        temp.push_back(arr[left++]);
+        temp.push_back(arr[left++);
     while (right <= high)
         temp.push_back(arr[right++]);
 
     for (int i = low; i <= high; i++)
-    {
         arr[i] = temp[i - low];
-    }
 
     return count;
 }
 
-int mergeSortAndCount(vector<int> &arr, int low, int high)
+pair<int, vector<pair<int, int>>> mergeSortAndCountWithPairs(vector<int> &arr, int low, int high, vector<pair<int, int>> &pairs)
 {
     if (low >= high)
-        return 0;
+        return {0, {}};
 
     int mid = (low + high) / 2;
     int count = 0;
 
-    count += mergeSortAndCount(arr, low, mid);
-    count += mergeSortAndCount(arr, mid + 1, high);
-    count += countAndMerge(arr, low, mid, high);
+    count += mergeSortAndCountWithPairs(arr, low, mid, pairs).first;
+    count += mergeSortAndCountWithPairs(arr, mid + 1, high, pairs).first;
+    count += countAndMergeWithPairs(arr, low, mid, high, pairs);
 
-    return count;
+    return {count, pairs};
 }
 
 // ------------------- MAIN -------------------
@@ -85,14 +83,24 @@ int main()
     cout << "Array elements: ";
     for (int x : nums)
         cout << x << " ";
-    cout << "\n";
+    cout << "\n\n";
 
-    int revCountBrute = reversePairsBrute(nums);
-    cout << "Number of reverse pairs (Brute Force) = " << revCountBrute << "\n";
+    // Brute Force
+    auto [countBrute, pairsBrute] = reversePairsBrutePairs(nums);
+    cout << "Brute Force:\nCount = " << countBrute << "\nPairs = ";
+    for (auto &p : pairsBrute)
+        cout << "(" << p.first << "," << p.second << ") ";
+    cout << "\n\n";
 
+    // Merge Sort
     vector<int> numsCopy = nums;
-    int revCountMerge = mergeSortAndCount(numsCopy, 0, numsCopy.size() - 1);
-    cout << "Number of reverse pairs (Merge Sort) = " << revCountMerge << "\n";
+    vector<pair<int, int>> pairsMerge;
+    auto [countMerge, _] = mergeSortAndCountWithPairs(numsCopy, 0, numsCopy.size() - 1, pairsMerge);
+
+    cout << "Merge Sort:\nCount = " << countMerge << "\nPairs = ";
+    for (auto &p : pairsMerge)
+        cout << "(" << p.first << "," << p.second << ") ";
+    cout << "\n";
 
     cout << "Sorted array using Merge Sort: ";
     for (int x : numsCopy)
