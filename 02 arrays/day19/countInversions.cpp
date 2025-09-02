@@ -50,7 +50,7 @@ int countAndMergeWithPairs(vector<int> &arr, int low, int mid, int high, vector<
             temp.push_back(arr[right++]);
     }
     while (left <= mid)
-        temp.push_back(arr[left++);
+        temp.push_back(arr[left++]);
     while (right <= high)
         temp.push_back(arr[right++]);
 
