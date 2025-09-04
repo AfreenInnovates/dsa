@@ -1,7 +1,7 @@
 - [x] Count number of subarrays with given xor K https://takeuforward.org/data-structure/count-the-number-of-subarrays-with-given-xor-k/
 - [x] https://leetcode.com/problems/contiguous-array/editorial/
 - [x] Merge Overlapping Subintervals : https://leetcode.com/problems/merge-intervals/ , https://takeuforward.org/data-structure/merge-overlapping-sub-intervals/
-- [ ] https://takeuforward.org/data-structure/maximum-product-subarray-in-an-array/ (dry run) , https://leetcode.com/problems/maximum-product-subarray/description/
+- [x] https://takeuforward.org/data-structure/maximum-product-subarray-in-an-array/ (dry run) , https://leetcode.com/problems/maximum-product-subarray/description/
 - [x] Daily leetcode problem 
     - solveSudoko question : 02 arrays\day20\solveSudoku.cpp
-- [ ] revise all by end of the day
+- [x] revise all by end of the day

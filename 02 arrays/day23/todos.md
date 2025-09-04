@@ -1,0 +1,2 @@
+- [x] Leetcode daily https://leetcode.com/problems/find-closest-person/
+    - 02 arrays\day23\findClosest.cpp

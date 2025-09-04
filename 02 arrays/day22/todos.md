@@ -1,0 +1,7 @@
+- [x] https://leetcode.com/problems/median-of-two-sorted-arrays/description/ , https://takeuforward.org/data-structure/median-of-two-sorted-arrays-of-different-sizes/
+- [x] https://takeuforward.org/arrays/painters-partition-problem/ , https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1
+- [x] https://takeuforward.org/data-structure/aggressive-cows-detailed-solution/ , https://www.geeksforgeeks.org/problems/aggressive-cows/1
+- [x] Leetcode daily question
+    - 02 arrays\day22\numberOfWaysToPlacePeopleII.cpp
+- [x] https://leetcode.com/problems/remove-element/?envType=problem-list-v2&envId=array , remove element
+- [x] revise all

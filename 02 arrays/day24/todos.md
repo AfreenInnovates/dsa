@@ -1,0 +1,2 @@
+- [ ] https://takeuforward.org/arrays/minimise-maximum-distance-between-gas-stations/ , https://leetcode.com/problems/minimize-max-distance-to-gas-station/
+- [ ] Leetcode daily
