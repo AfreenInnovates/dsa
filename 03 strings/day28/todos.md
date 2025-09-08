@@ -1,0 +1,3 @@
+- [ ] complete medium string problems (lecture 2 under strings) : https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/
+- [ ] revise day27 approaches 
+- [ ] review KMP approach for check rotated string part of string
