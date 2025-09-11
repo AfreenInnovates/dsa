@@ -6,13 +6,20 @@
 using namespace std;
 
 /*
+ * Problem
+ * Determine if two given strings are anagrams of each other.
+ * Two strings are anagrams if they contain the exact same characters
+ * in the same quantity, but possibly in a different order.
+ * The task is to return true if they are anagrams, false otherwise.
+ */
+
+/*
 Approach 1: Sort & Compare
 --------------------------
-Idea: Two strings are anagrams iff their sorted character sequences are equal.
-
 Time  : O(n log n) — sort both strings (n = s.size() = t.size()).
 Space : O(n)       — we copy s and t into local buffers to avoid mutating inputs
                      (plus O(log n) recursion stack used by std::sort).
+                     (not necessary - can just be return sort(s.begin(), s.end()) == sort(t.begin(), t.end()))
 */
 bool isAnagram_sortCompare(const string &s, const string &t)
 {
@@ -48,6 +55,7 @@ bool isAnagram_hashMap(const string &s, const string &t)
         if (val != 0)
             return false;
     }
+
     return true;
 }
 

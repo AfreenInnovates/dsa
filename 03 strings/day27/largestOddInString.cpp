@@ -2,9 +2,20 @@
 using namespace std;
 
 /*
+ * Problem
+ * -------
+ * Given a numeric string, find the largest prefix that forms an odd number.
+ * The prefix must start from the first digit and end at the rightmost odd digit.
+ * If no odd digit exists, return an empty string.
+ */
+
+//
+//
+
+/*
 Approach 1
 -------------------------------------------------------------------------------
-We keep your two for-loops with j = i + 1. Since the problem wants a *prefix*,
+We keep two for-loops with j = i + 1. Since the problem wants a *prefix*,
 we only consider i == 0 and track the rightmost odd digit index 'best'.
 
 Time  : O(n^2)  (nested loops over i and j)
@@ -13,7 +24,7 @@ Space : O(1)
 string largestOddNumber_nested(const string &num)
 {
     int n = (int)num.size();
-    int best = -1; // rightmost index j (>=0) such that num[0..j] forms an odd number
+    int best = -1;
 
     if (n > 0 && ((num[0] - '0') % 2) != 0)
         best = 0;

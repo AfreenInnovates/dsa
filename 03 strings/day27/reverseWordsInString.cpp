@@ -40,7 +40,7 @@ string reverseWords_collectAndReverse(const string &s)
             current += s[i];
         }
     }
-    if (!current.empty())
+    if (!current.empty()) // for the last word, as no space after last word
         words.push_back(current);
 
     string res;
@@ -64,8 +64,7 @@ Steps (all in-place, only for-loops, no while):
 3) Reverse each word (scan with a single for-loop and reverse on word boundaries).
 
 Time  : O(n) — each character is moved a constant number of times across the steps.
-Space : O(1) extra — all operations are done in the same string buffer; no extra
-                     containers beyond a few indices (excluding the output string).
+Space : O(1)
 
 */
 string reverseWords_inPlace(string s)
@@ -73,11 +72,11 @@ string reverseWords_inPlace(string s)
     // 1) Normalize spaces in-place
     int writePos = 0;
     bool wroteSpaceLast = true; // treat "before start" as space to drop leading spaces
-    for (int readPos = 0; readPos < (int)s.size(); ++readPos)
+    for (int i = 0; i < (int)s.size(); ++i)
     {
-        if (s[readPos] != ' ')
+        if (s[i] != ' ')
         {
-            s[writePos++] = s[readPos];
+            s[writePos++] = s[i];
             wroteSpaceLast = false;
         }
         else if (!wroteSpaceLast)
@@ -87,7 +86,7 @@ string reverseWords_inPlace(string s)
         }
     }
     if (writePos > 0 && s[writePos - 1] == ' ')
-        --writePos; // drop trailing space
+        --writePos;
     s.resize(writePos);
 
     // 2) Reverse whole string
@@ -106,6 +105,41 @@ string reverseWords_inPlace(string s)
     return s;
 }
 
+/*
+Approach C: Two-pointer scanning from the end (no extra vector)
+----------------------------------------------------------------
+- Use a pointer from the end to skip trailing spaces.
+- Find each word by scanning backward until the next space.
+- Append each word to the result followed by a space.
+- Time  : O(n) — each character scanned once.
+- Space : O(1) extra (output string does not count as extra space).
+*/
+string reverseWords_twoPointer(const string &s)
+{
+    string res;
+    int n = (int)s.size();
+    int i = n - 1;
+
+    while (i >= 0)
+    {
+        while (i >= 0 && s[i] == ' ') // skip trailing spaces
+            --i;
+        if (i < 0)
+            break;
+
+        int wordEnd = i;
+        while (i >= 0 && s[i] != ' ') // find word start
+            --i;
+        int wordStart = i + 1;
+
+        if (!res.empty())
+            res += ' ';
+        res += s.substr(wordStart, wordEnd - wordStart + 1);
+    }
+
+    return res;
+}
+
 int main()
 {
     vector<string> tests = {
@@ -120,12 +154,15 @@ int main()
     {
         string rA = reverseWords_collectAndReverse(s);
         string rB = reverseWords_inPlace(s);
+        string rC = reverseWords_twoPointer(s);
 
         cout << "s:  \"" << s << "\"\n";
         cout << "A : \"" << rA << "\"\n";
-        cout << "B : \"" << rB << "\"\n\n";
+        cout << "B : \"" << rB << "\"\n";
+        cout << "C : \"" << rC << "\"\n\n";
 
         assert(rA == rB);
+        assert(rA == rC);
     }
 
     cout << "All tests passed.\n";

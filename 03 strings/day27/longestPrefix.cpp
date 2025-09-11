@@ -3,37 +3,52 @@
 #include <string>
 using namespace std;
 
+/*
+ * Problem
+ * -------
+ * Given an array of strings, find the longest common prefix among them.
+ * The prefix must appear at the start of every string.
+ * If no common prefix exists, return an empty string.
+ */
+
+//
+//
+
+/*  * Time Complexity:
+ *  - Worst case: O(n * L^2)
+ *    - n = number of strings
+ *    - L = length of the first string (or maximum possible prefix)
+ *    - For each string, the prefix may shrink from length L down to 0.
+ *      Each shrink involves substr() and find(), each taking O(L) time.
+ *  - Best case: O(n * L)
+ *    - All strings share the full prefix; inner loop runs once per string.
+ *
+ * Space Complexity:
+ *  - O(L)
+ *    - Only stores the prefix string (at most length L)
+ */
 string longestCommonPrefix(vector<string> &strs)
 {
     if (strs.empty())
     {
-        cout << "[DBG] strs is empty → return \"\"\n";
         return "";
     }
 
     string prefix = strs[0];
-    cout << "[DBG] init prefix = \"" << prefix << "\"\n";
 
     for (int i = 1; i < (int)strs.size(); ++i)
     {
-        cout << "[DBG] compare with strs[" << i << "] = \"" << strs[i] << "\"\n";
-
-        while (strs[i].find(prefix) != 0)
+        while (strs[i].find(prefix) != 0) // checks if str[i] starts with prefix
         {
-            cout << "      not a prefix → shrink: \"" << prefix << "\" → ";
-            prefix = prefix.substr(0, prefix.length() - 1);
-            cout << "\"" << prefix << "\"\n";
+            prefix = prefix.substr(0, prefix.length() - 1); // substr(start, length) -> start: starting index, length -> how many characters to take
 
             if (prefix.empty())
             {
-                cout << "[DBG] prefix became empty → return \"\"\n";
                 return "";
             }
         }
-        cout << "      OK, current prefix = \"" << prefix << "\"\n";
     }
 
-    cout << "[DBG] final prefix = \"" << prefix << "\"\n";
     return prefix;
 }
 

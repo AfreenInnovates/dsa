@@ -6,6 +6,18 @@
 #include <algorithm>
 using namespace std;
 
+/*
+ * Problem
+ * -------
+ * Check whether two strings are isomorphic.
+ * Two strings are isomorphic if characters in one string can be replaced
+ * consistently to get the other string, with a one-to-one mapping
+ * (no two different characters map to the same character).
+ * Return true if they are isomorphic, false otherwise.
+ */
+
+//
+//
 /* ==============================
    Time:  O(n)
    Space: O(1)   fixed 256-sized arrays
@@ -49,10 +61,6 @@ bool isIsomorphic_user(const string &s, const string &t)
 
 /* ======================================================
    Brute Force #1: Quadratic check by occurrences pattern
-   ------------------------------------------------------
-   For each i, let (c1, c2) = (s[i], t[i]). Scan all j:
-   - If s[j] == c1, must have t[j] == c2
-   - If t[j] == c2, must have s[j] == c1
    Time : O(n^2)
    Space: O(1)
 ====================================================== */

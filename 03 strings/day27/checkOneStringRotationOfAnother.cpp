@@ -5,9 +5,17 @@
 using namespace std;
 
 /*
-Approach 1: Try all rotations using std::rotate (your approach moved out of class)
+ * Problem
+ * -------
+ * Check whether one string can be rotated to become another string.
+ * A rotation means shifting characters in order (e.g., "abcde" -> "cdeab").
+ * Return true if the second string is a rotation of the first, false otherwise.
+ */
+
+/*
+Approach 1: Try all rotations using std::rotate
 Time : O(n^2)  -> n rotations, each rotation costs O(n)
-Space: O(1)    -> in-place rotation (ignoring input/output)
+Space: O(1)    -> in-place rotation
 */
 bool rotateString_byRotating(string s, const string &goal)
 {
@@ -28,6 +36,10 @@ bool rotateString_byRotating(string s, const string &goal)
 Approach 2: Check if goal is a substring of s+s. In most cases the rotated string is a substring of the concatenated string. So its length also must be less than s + s
 Time : O(n) average (depends on find implementation), worst-case can degrade
 Space: O(n) for the concatenated string (s+s)
+// example : abcde
+// s + s : abcdeabcde
+// check for cdeab
+// which is a substring of s + s
 */
 bool rotateString_substringCheck(const string &s, const string &goal)
 {
