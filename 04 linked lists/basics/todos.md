@@ -1,0 +1,5 @@
+- [ ] count nodes
+- [ ] search and element
+- [ ] find min max element
+- [ ] count occurrences of an element
+- [ ] get nth node

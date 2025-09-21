@@ -1,4 +1,4 @@
-- [ ] https://leetcode.com/problems/plus-one/description/
+- [x] https://leetcode.com/problems/plus-one/description/
 - [ ] https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 - [ ] https://leetcode.com/problems/contains-duplicate-ii/description/
 - [ ] https://leetcode.com/problems/summary-ranges/description/
