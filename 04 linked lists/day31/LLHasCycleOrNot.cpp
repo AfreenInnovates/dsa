@@ -106,9 +106,6 @@ int main()
     cout << "  Acyclic list has cycle? " << hasCycleFloyd(acyclic) << endl; // expected: false
     cout << "  Cyclic list has cycle?  " << hasCycleFloyd(cyclic) << endl;  // expected: true
 
-    // Cleanup:
-    // - acyclic is safe to delete (no cycle)
-    // - cyclic currently contains a cycle; don't call deleteList on it or you'll loop infinitely.
     deleteList(acyclic);
 
     return 0;
