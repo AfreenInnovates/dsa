@@ -5,3 +5,6 @@
 .vscode/
 .idea/
 .github/
+
+file_counts.txt
+files.py
